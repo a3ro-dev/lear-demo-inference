@@ -1,0 +1,32 @@
+{"prompt": "My invoice shows two charges for March. Can you explain why?"}
+{"prompt": "How do I reset my password if I no longer have access to my email?"}
+{"prompt": "The mobile app crashes when I open the settings page. What should I try?"}
+{"prompt": "Can I change my plan from monthly to annual billing mid-cycle?"}
+{"prompt": "Our team needs SSO. Which plans support SAML?"}
+{"prompt": "I exported my data but the CSV is missing the last two weeks."}
+{"prompt": "How do I add a teammate without giving them admin rights?"}
+{"prompt": "Webhooks stopped firing after we rotated our API key. Why?"}
+{"prompt": "Is there a way to bulk-delete old projects?"}
+{"prompt": "What is your data retention policy for deleted accounts?"}
+{"prompt": "The dashboard says quota exceeded but we barely used anything this month."}
+{"prompt": "Can I get a refund for unused seats?"}
+{"prompt": "How do I connect your service to our Slack workspace?"}
+{"prompt": "Two-factor codes from the authenticator app are always rejected."}
+{"prompt": "Our API calls return 429 during business hours. What are the limits?"}
+{"prompt": "How do I move a project from one workspace to another?"}
+{"prompt": "The search results are empty even though the documents exist."}
+{"prompt": "Can you send invoices to a separate billing email?"}
+{"prompt": "How long does it take for a cancelled subscription to stop charging?"}
+{"prompt": "I want to self-host. Do you offer an on-prem version?"}
+{"prompt": "Notifications arrive hours late on Android."}
+{"prompt": "How do I rotate an API key without downtime?"}
+{"prompt": "Our audit log is missing entries from yesterday."}
+{"prompt": "Is there a GDPR data processing agreement I can sign?"}
+{"prompt": "Can I schedule reports to be emailed every Monday?"}
+{"prompt": "Why does the import fail with an unsupported encoding error?"}
+{"prompt": "How can I restrict access by IP address?"}
+{"prompt": "The status page says operational but we see timeouts."}
+{"prompt": "Can we get a sandbox environment for testing?"}
+{"prompt": "How do I downgrade without losing my data?"}
+{"prompt": "My colleague left the company. How do I transfer ownership of their projects?"}
+{"prompt": "What happens to shared links when I delete a file?"}

@@ -1,0 +1,5 @@
+# same install line as the laptop setup guide
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.9.1+cpu
+transformers>=4.51
+accelerate
