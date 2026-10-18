@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
+      # The 200 tok/s bar (A5000, 16 prompts x 32 tokens) assumes the engine runs on the GPU,
+      # in fp16/bf16, with the KV cache on, and generates the whole batch in one padded
+      # generate() call. One prompt at a time tops out around 60 tok/s on this pod.
       MIN_TOKENS_PER_SEC: "200"
       REQUIRE_GPU: "1"
       HOST: ${{ secrets.RUNPOD_SSH_HOST }}
