@@ -12,7 +12,7 @@ class Engine:
     def __init__(self, model_id: str = MODEL_ID):
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         self.tok = AutoTokenizer.from_pretrained(model_id, padding_side="left")
-        self.model = AutoModelForCausalLM.from_pretrained(model_id, torch_dtype=torch.float32)
+        self.model = AutoModelForCausalLM.from_pretrained(model_id, torch_dtype=torch.float16 if self.device == "cuda" else torch.float32)
         self.model.to(self.device).eval()
 
     def _encode(self, prompt: str) -> str:
@@ -31,7 +31,7 @@ class Engine:
                 max_new_tokens=max_new_tokens,
                 min_new_tokens=max_new_tokens,
                 do_sample=False,
-                use_cache=False,
+                use_cache=True,
             )
             outputs.append(out[0, ids["input_ids"].shape[1]:])
         return outputs
