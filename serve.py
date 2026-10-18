@@ -31,7 +31,7 @@ class Engine:
                 max_new_tokens=max_new_tokens,
                 min_new_tokens=max_new_tokens,
                 do_sample=False,
-                use_cache=False,
+                use_cache=True,
             )
             outputs.append(out[0, ids["input_ids"].shape[1]:])
         return outputs
