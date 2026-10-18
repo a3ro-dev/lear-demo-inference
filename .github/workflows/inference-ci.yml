@@ -26,8 +26,8 @@ jobs:
       - name: Ship commit to pod
         run: |
           tar czf - --exclude=.git . | ssh -o ServerAliveInterval=20 -o ServerAliveCountMax=60 -i ~/.ssh/pod -p "$PORT" "root@$HOST" \
-            "rm -rf /workspace/runs/$GITHUB_SHA && mkdir -p /workspace/runs/$GITHUB_SHA && tar xzf - --no-same-owner -C /workspace/runs/$GITHUB_SHA"
+            "rm -rf /root/runs && mkdir -p /root/runs/$GITHUB_SHA && tar xzf - --no-same-owner -C /root/runs/$GITHUB_SHA"
       - name: Throughput gate (GPU pod)
         run: |
           ssh -o ServerAliveInterval=20 -o ServerAliveCountMax=60 -i ~/.ssh/pod -p "$PORT" "root@$HOST" \
-            "cd /workspace/runs/$GITHUB_SHA && MIN_TOKENS_PER_SEC=$MIN_TOKENS_PER_SEC REQUIRE_GPU=$REQUIRE_GPU bash deploy/run_bench.sh"
+            "cd /root/runs/$GITHUB_SHA && MIN_TOKENS_PER_SEC=$MIN_TOKENS_PER_SEC REQUIRE_GPU=$REQUIRE_GPU bash deploy/run_bench.sh"
