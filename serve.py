@@ -23,18 +23,16 @@ class Engine:
     @torch.inference_mode()
     def generate(self, prompts: list[str], max_new_tokens: int = 64) -> list[torch.Tensor]:
         """Returns the generated token ids for each prompt (prompt stripped)."""
-        outputs = []
-        for prompt in prompts:
-            ids = self.tok(self._encode(prompt), return_tensors="pt").to(self.device)
-            out = self.model.generate(
-                **ids,
-                max_new_tokens=max_new_tokens,
-                min_new_tokens=max_new_tokens,
-                do_sample=False,
-                use_cache=True,
-            )
-            outputs.append(out[0, ids["input_ids"].shape[1]:])
-        return outputs
+        # One padded batch instead of one request at a time: the GPU decodes every prompt per step.
+        ids = self.tok([self._encode(p) for p in prompts], return_tensors="pt", padding=True).to(self.device)
+        out = self.model.generate(
+            **ids,
+            max_new_tokens=max_new_tokens,
+            min_new_tokens=max_new_tokens,
+            do_sample=False,
+            use_cache=True,
+        )
+        return list(out[:, ids["input_ids"].shape[1]:])
 
     def decode(self, ids: torch.Tensor) -> str:
         return self.tok.decode(ids, skip_special_tokens=True).strip()
